@@ -4,3 +4,4 @@
 
 file1 2021-02-16T10:27:21Z RutujaGholap <rutujamgholap99@gmail.com> # Adding Schema file
 file2 [file1] 2021-02-16T10:48:43Z ankitapawar <ankita.pawar@snowflake.com> # adding table in demo schema
+prj_by_id 2021-02-16T11:42:04Z ankitapawar <ankita.pawar@snowflake.com> # "this file contains stored procedure for prj_by_id"
