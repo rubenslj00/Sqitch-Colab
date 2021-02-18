@@ -3,4 +3,4 @@
 USE WAREHOUSE &warehouse;
 
 -- XXX Add DDLs here.
-Drop table demo.emp;
+Drop table demo.employee;

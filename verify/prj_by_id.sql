@@ -3,3 +3,4 @@
 USE WAREHOUSE &warehouse;
 
 -- XXX Add verifications here.
+select * from demo.weather;

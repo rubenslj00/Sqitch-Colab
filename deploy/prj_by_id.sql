@@ -3,25 +3,27 @@
 USE WAREHOUSE &warehouse;
 
 -- XXX Add DDLs here.
-CREATE OR REPLACE PROCEDURE GET_PROJECT_ID_NAME()
-returns string not null
-language javascript
-as
-$$
-var sql_truncate = snowflake.createStatement({sqlText:"truncate table public.prj_id_name;"});
-var truncate_result = sql_truncate.execute();
-var insert_cmd = `
-insert into public.prj_id_name
-SELECT
-    items.value:"projectId"::int                as id
-  , items.value:"projectName"::varchar(1000)       as prjname
+use schema demo;
+create or replace procedure weather_procedure(City varchar,DAY varchar,PARAM_MAX FLOAT,PARAM_MIN FLOAT)
+    returns string
+    language javascript
+    as
+    $$
+    var x=CITY
+    var m=DAY
+    var p=PARAM_MAX
+    var r=PARAM_MIN
+    var rs = snowflake.execute( { sqlText:
+      `INSERT INTO weather("CITY","DAY","MAX_TEMP","MIN_TEMP")
+           values ('${x}','${m}','${p}','${r}');`
+           });
+  return 'Done.';
+    $$
+    ;
   
-FROM public.all_projects
-  , lateral flatten (parse_json(autonomiqtest('https://autonomiq-test.snowflake.com/platform/v1/getprojects',
-                                     '{"Authorization":"Basic {{autonomiq}}"}'))
-) as items;
-`
-var sql_insert = snowflake.createStatement({sqlText: insert_cmd});
-var insert_result = sql_insert.execute();
-return 'a';
-$$;
+call weather_procedure('Pune','Wednesday',36.99,20.99);
+call weather_procedure('Goa','Wednesday',35.8,18.9);
+call weather_procedure('Banglore','Wednesday',37.56,15.99);
+call weather_procedure('Nasik','Wednesday',33.98,17.9);
+call weather_procedure('Mumbai','Wednesday',37.8,17.69);
+call weather_procedure('Solapur','Wednesday',34.7,21.56);

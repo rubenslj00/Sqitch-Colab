@@ -3,4 +3,4 @@
 USE WAREHOUSE &warehouse;
 
 -- XXX Add verifications here.
-select * from demo.emp
+select * from demo.employee;
