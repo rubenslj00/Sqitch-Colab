@@ -3,4 +3,4 @@
 USE WAREHOUSE &warehouse;
 
 -- XXX Add DDLs here.
-drop table weather;
+drop table demo.weather;
