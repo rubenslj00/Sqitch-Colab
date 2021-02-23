@@ -27,14 +27,14 @@ pipeline {
         stage('Sqitch Deploy'){
             steps {
                 withCredentials([usernamePassword(credentialsId: 'Sqitch', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {
-            sh 'sqitch deploy "db:snowflake://rubenslj00:Lolynec#5@fwa76732/DEMO_DB?Driver=Snowflake"'
+            sh 'sqitch deploy "db:snowflake://rubenslj00:Lolynec#5@fwa76732/SNOWFLAKE?Driver=Snowflake"'
                         }
                     }
         }
                 stage('Sqitch Verify'){
             steps {
                 withCredentials([usernamePassword(credentialsId: 'Sqitch', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {
-            sh 'sqitch verify "db:snowflake://rubenslj00:Lolynec#5@fwa76732/DEMO_DB?Driver=Snowflake"'
+            sh 'sqitch verify "db:snowflake://rubenslj00:Lolynec#5@fwa76732/SNOWFLAKE?Driver=Snowflake"'
                         }
                     }
         }
@@ -42,7 +42,7 @@ pipeline {
              stage('Sqitch Status'){
             steps {
                 withCredentials([usernamePassword(credentialsId: 'Sqitch', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {
-            sh 'sqitch status "db:snowflake://rubenslj00:Lolynec#5@fwa76732/DEMO_DB?Driver=Snowflake"'
+            sh 'sqitch status "db:snowflake://rubenslj00:Lolynec#5@fwa76732/SNOWFLAKE?Driver=Snowflake"'
                         }
                     }
         }
