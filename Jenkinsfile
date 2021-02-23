@@ -4,6 +4,16 @@ pipeline {
       timeout(time: 1, unit: 'HOURS') 
         }
      agent any
+    stages{
+        stage('moving .snowsql to workspace and replacing snowsql in /bin'){
+            steps{
+                sh ...
+                rm /bin/snowsql
+                mv /var/snowsql /bin/
+                mv /var/.snowsql ./
+                ...
+            }
+        }
 
     stages{
         stage('Test sqitch installation'){
