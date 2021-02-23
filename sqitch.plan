@@ -1,6 +1,6 @@
 %syntax-version=1.0.0
 %project=SnowProject
-%uri=https://github.com/RutujaMGholap/Sqitch-Colab/
+%uri=https://github.com/rubenslj00/Sqitch-Colab/
 
 file1 2021-02-16T10:27:21Z RutujaGholap <rutujamgholap99@gmail.com> # Adding Schema file
 file2 [file1] 2021-02-16T10:48:43Z ankitapawar <ankita.pawar@snowflake.com> # adding table in demo schema
