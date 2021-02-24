@@ -27,7 +27,7 @@ pipeline {
         stage('Sqitch Deploy'){
             steps {
                 withCredentials([usernamePassword(credentialsId: 'snowflake_creds', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {
-            sh ' cd ~/.snowsql && cat config'
+           
             sh 'sqitch deploy "db:snowflake://$USERNAME:$PASSWORD@fva39793/Sqitch_Jenkins?Driver=Snowflake;warehouse=compute_wh;"'
                         }
                     }
