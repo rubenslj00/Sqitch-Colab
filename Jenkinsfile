@@ -26,7 +26,7 @@ pipeline {
 
         stage('Sqitch Deploy'){
             steps {
-                withCredentials([usernamePassword(credentialsId: 'Sqitch', passwordVariable: 'school1', usernameVariable: 'sqitch_user')]) {
+                withCredentials([usernamePassword(credentialsId: 'Sqitch', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {
             sh ' cd ~/.snowsql && cat config'
             sh 'sqitch deploy "db:snowflake://$USERNAME:$PASSWORD@fwa76732/Sqitch_Jenkins?Driver=Snowflake;warehouse=compute_wh;"'
                         }
@@ -34,7 +34,7 @@ pipeline {
         }
                 stage('Sqitch Verify'){
             steps {
-                withCredentials([usernamePassword(credentialsId: 'Sqitch', passwordVariable: 'school1', usernameVariable: 'sqitch_user')]) {
+                withCredentials([usernamePassword(credentialsId: 'Sqitch', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {
             sh 'sqitch verify "db:snowflake://$USERNAME:$PASSWORD@fwa76732/Sqitch_Jenkins?Driver=Snowflake;warehouse=compute_wh;"'
                         }
                     }
@@ -42,7 +42,7 @@ pipeline {
    
              stage('Sqitch Status'){
             steps {
-                withCredentials([usernamePassword(credentialsId: 'Sqitch', passwordVariable: 'school1', usernameVariable: 'sqitch_user')]) {
+                withCredentials([usernamePassword(credentialsId: 'Sqitch', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {
             sh 'sqitch status "db:snowflake://$USERNAME:$PASSWORD@fwa76732/Sqitch_Jenkins?Driver=Snowflake;warehouse=compute_wh;"'
                         }
                     }
