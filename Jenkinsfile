@@ -28,14 +28,14 @@ pipeline {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'Sqitch', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {
             sh ' cd ~/.snowsql && cat config'
-            sh 'sqitch deploy "db:snowflake://$USERNAME:$PASSWORD@fwa76732/Sqitch_Jenkins?Driver=Snowflake;warehouse=compute_wh;"'
+            sh 'sqitch deploy "db:snowflake://rubenslj00@fwa76732/Sqitch_Jenkins?Driver=Snowflake;warehouse=compute_wh;"'
                         }
                     }
         }
                 stage('Sqitch Verify'){
             steps {
                 withCredentials([usernamePassword(credentialsId: 'Sqitch', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {
-            sh 'sqitch verify "db:snowflake://$USERNAME:$PASSWORD@fwa76732/Sqitch_Jenkins?Driver=Snowflake;warehouse=compute_wh;"'
+            sh 'sqitch verify "db:snowflake://rubenslj00@fwa76732/Sqitch_Jenkins?Driver=Snowflake;warehouse=compute_wh;"'
                         }
                     }
         }
@@ -43,7 +43,7 @@ pipeline {
              stage('Sqitch Status'){
             steps {
                 withCredentials([usernamePassword(credentialsId: 'Sqitch', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {
-            sh 'sqitch status "db:snowflake://$USERNAME:$PASSWORD@fwa76732/Sqitch_Jenkins?Driver=Snowflake;warehouse=compute_wh;"'
+            sh 'sqitch status "db:snowflake://rubenslj00@fwa76732/Sqitch_Jenkins?Driver=Snowflake;warehouse=compute_wh;"'
                         }
                     }
         }
