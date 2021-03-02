@@ -26,24 +26,24 @@ pipeline {
 
         stage('Sqitch Deploy'){
             steps {
-                withCredentials([usernamePassword(credentialsId: 'jobs', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {
+                withCredentials([usernamePassword(credentialsId: 'snowflake_creds', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {
            
-            sh 'sqitch deploy "db:snowflake://$USERNAME:$PASSWORD@uca35382/Sqitch_Jenkins?Driver=Snowflake;warehouse=compute_wh;"'
+            sh 'sqitch deploy "db:snowflake://$USERNAME:$PASSWORD@moffitt.us-east-1.privatelink.snowflakecomputing.com/SNOWFLAKE_SAMPLE_DATA?Driver=Snowflake;warehouse=load_wh;"'
                         }
                     }
         }
                 stage('Sqitch Verify'){
             steps {
-                withCredentials([usernamePassword(credentialsId: 'jobs', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {
-            sh 'sqitch verify "db:snowflake://$USERNAME:$PASSWORD@uca35382/Sqitch_Jenkins?Driver=Snowflake;warehouse=compute_wh;"'
+                withCredentials([usernamePassword(credentialsId: 'snowflake_creds', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {
+            sh 'sqitch verify "db:snowflake://$USERNAME:$PASSWORD@moffitt.us-east-1.privatelink.snowflakecomputing.com/SNOWFLAKE_SAMPLE_DATA?Driver=Snowflake;warehouse=load_wh;"'
                         }
                     }
         }
    
              stage('Sqitch Status'){
             steps {
-                withCredentials([usernamePassword(credentialsId: 'jobs', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {
-            sh 'sqitch status "db:snowflake://$USERNAME:$PASSWORD@uca35382/Sqitch_Jenkins?Driver=Snowflake;warehouse=compute_wh;"'
+                withCredentials([usernamePassword(credentialsId: 'snowflake_creds', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {
+            sh 'sqitch status "db:snowflake://$USERNAME:$PASSWORD@moffitt.us-east-1.privatelink.snowflakecomputing.com/SNOWFLAKE_SAMPLE_DATA?Driver=Snowflake;warehouse=load_wh;"'
                         }
                     }
         }
