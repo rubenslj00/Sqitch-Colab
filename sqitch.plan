@@ -5,3 +5,4 @@
 file1 2021-02-16T10:27:21Z Ruben <rubenslj00@gmail.com> # Adding Schema file
 file2 [file1] 2021-02-16T10:48:43Z ruben <rubensj00@gmail.com> # adding table in demo schema
 prj_by_id 2021-02-16T11:42:04Z ruben <rubenslj00@gmail.com> # "this file contains stored procedure for prj_by_id"
+appschema 2021-03-05T11:15:36Z Ubuntu <ubuntu@ip-172-31-60-199> # Add schema for all flipr objects.
