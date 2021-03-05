@@ -28,22 +28,36 @@ pipeline {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'sqitch', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {
            
+<<<<<<< HEAD
             sh 'sqitch deploy "db:snowflake://$USERNAME:$PASSWORD@fva39793.us-east-1.snowflakecomputing.com/DEMO_DB?Driver=Snowflake;warehouse=compute_wh;"'
+=======
+            sh 'sqitch deploy "db:snowflake://$USERNAME:$PASSWORD@uca35382.snowflakecomputing.com/sqitch_jenkins?Driver=Snowflake;warehouse=compute_wh;"'
+>>>>>>> 0c60ccf17257bc057c924425b39e7328082b3ca6
                         }
                     }
         }
                 stage('Sqitch Verify'){
             steps {
+<<<<<<< HEAD
                 withCredentials([usernamePassword(credentialsId: 'sqitch', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {
             sh 'sqitch verify "db:snowflake://$USERNAME:$PASSWORD@fva39793.us-east-1.snowflakecomputing.com/DEMO_DB?Driver=Snowflake;warehouse=compute_wh;"'
+=======
+                withCredentials([usernamePassword(credentialsId: 'snowflake_creds', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {
+            sh 'sqitch verify "db:snowflake://$USERNAME:$PASSWORD@uca35382.snowflakecomputing.com/sqitch_jenkins?Driver=Snowflake;warehouse=compute_wh;"'
+>>>>>>> 0c60ccf17257bc057c924425b39e7328082b3ca6
                         }
                     }
         }
    
              stage('Sqitch Status'){
             steps {
+<<<<<<< HEAD
                 withCredentials([usernamePassword(credentialsId: 'sqitch', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {
             sh 'sqitch status "db:snowflake://$USERNAME:$PASSWORD@fva39793.us-east-1.snowflakecomputing.com/DEMO_DB?Driver=Snowflake;warehouse=compute_wh;"'
+=======
+                withCredentials([usernamePassword(credentialsId: 'snowflake_creds', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {
+            sh 'sqitch status "db:snowflake://$USERNAME:$PASSWORD@uca35382.snowflakecomputing.com/sqitch_jenkins?Driver=Snowflake;warehouse=compute_wh;"'
+>>>>>>> 0c60ccf17257bc057c924425b39e7328082b3ca6
                         }
                     }
         }
