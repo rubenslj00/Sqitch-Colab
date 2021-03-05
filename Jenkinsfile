@@ -26,9 +26,14 @@ pipeline {
 
         stage('Sqitch Deploy'){
             steps {
+<<<<<<< HEAD
                 withCredentials([usernamePassword(credentialsId: 'sqitch', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {
            
            sh 'sqitch deploy "db:snowflake://$USERNAME:$PASSWORD@uca35382.snowflakecomputing.com/sqitch_jenkins?Driver=Snowflake;warehouse=compute_wh;"'
+=======
+                withCredentials([usernamePassword(credentialsId: 'snowflake_creds', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {
+            sh 'sqitch deploy "db:snowflake://$USERNAME:$PASSWORD@uca35382.snowflakecomputing.com/sqitch_jenkins?Driver=Snowflake;warehouse=compute_wh;"'
+>>>>>>> a89347bef1b14dab09db78fe3fee9d81e444162c
                         }
                     }
         }
@@ -43,8 +48,14 @@ pipeline {
              stage('Sqitch Status'){
             steps {
                 withCredentials([usernamePassword(credentialsId: 'snowflake_creds', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {
+<<<<<<< HEAD
             sh 'sqitch status "db:snowflake://$USERNAME:$PASSWORD@uca35382.snowflakecomputing.com/sqitch_jenkins?Driver=Snowflake;warehouse=compute_wh;"'
 
+=======
+            sh 'sqitch status "db:snowflake://$USERNAME:$PASSWORD@uca35382.snowflakecomputing.com/sqitch_jenkins?Driver=Snowflake;warehouse=compute_wh;"''
+                        }
+                    }
+>>>>>>> a89347bef1b14dab09db78fe3fee9d81e444162c
         }
        }    
  }
